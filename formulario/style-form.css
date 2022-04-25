@@ -43,6 +43,11 @@ li {
     color: #e5e7eb;
 }
 
+.logo img {
+    max-width: 2.5rem;
+    height: 100%;
+}
+
 .logo {
     font-size: 32px;
     font-weight: bold;

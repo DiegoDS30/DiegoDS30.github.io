@@ -41,6 +41,11 @@ li {
     color: #e5e7eb;
 }
 
+.logo img {
+    max-width: 2.5rem;
+    height: 100%;
+}
+
 .nav-links a {
     color: #e5e7eb;
 }

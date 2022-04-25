@@ -43,9 +43,9 @@ li {
     color: #e5e7eb;
 }
 
-.logo {
-    font-size: 32px;
-    font-weight: bold;
+.logo img {
+    max-width: 2.5rem;
+    height: 100%;
 }
 
 .menu {
