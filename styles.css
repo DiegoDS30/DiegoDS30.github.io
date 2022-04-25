@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+* {
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+/* Utilidades para toda la pagina */
+
+body {
+    font-family: roboto, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #e5e7eb;
+}
+
+li {
+    list-style: none;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Navbar */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 300px;
+    background-color: #1f2937;
+    color: #e5e7eb;
+}
+
+.nav-links a {
+    color: #e5e7eb;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.menu {
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+}
+
+.menu li:hover {
+    border-radius: 5px;
+    transition: 0.3s ease;
+    background-color: #1f2937;
+}
+
+.menu li {
+    padding: 5px 14px;
+}
+
+/* Dropdown */
+
+.opcion2 {
+    position: relative;
+}
+
+.dropdown {
+    background-color: inherit;
+    padding: 1em 0;
+    position: absolute;
+    display: none;
+    border-radius: 8px;
+    top: 35px;
+}
+
+.dropdown li + li {
+    margin-top: 10px;
+}
+
+.dropdown li{
+    padding: 0.5em 1em;
+    width: 8em;
+    text-align: center;
+}
+
+.opcion2:hover .dropdown {
+    display: block;
+    background-color: #1f2937;
+}
+
+/* hero === cuerpo */
+
+.hero {
+    background-image: url(./images/image.jpeg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 90px;
+    color: #fff;
+}
+
+.hero .hero-title {
+    display: flex;
+    flex-basis: 400px;
+    align-items: center;
+    flex-direction: column;
+    padding-right: 90px;
+    font-family: Roboto, sans-serif;
+    text-align: left;
+}
+
+.hero h1 {
+    padding-bottom: 45px;
+}
+
+.hero p {
+    text-align: justify;
+    font-family: Roboto, sans-serif;
+    padding-bottom: 26px;
+}
+
+.hero button {
+    text-align: center;
+    width: 85x;
+    border: none;
+    background: #3882f6;
+    padding: 4px;
+    border-radius: 6px;
+    color: #fff;
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+ul#horizontal {
+    list-style: none;
+}
+
+ul#horizontal li {
+    display: inline;
+}
+
+.hero .video {
+    display: flex;
+}
+
+/* content === contenido (lo de abajo del hero)*/
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    font-family: Roboto, sans-serif;
+}
+
+.content-h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-h2 h2 {
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Imagenes y transicion */
+
+.content-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+    margin: 40px 500px;
+}
+
+.imagen1 {
+    display: block;
+    max-width: 100%;
+    height: 100%;
+}
+
+
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    right: 0;
+    overflow: hidden;
+    background-color: antiquewhite;
+    width: 0;
+    height: 100%;
+    transition: 0.5s ease;
+}
+
+.img-box1:hover .overlay {
+    width: 100%;
+    left: 0;
+}
+
+.otra-imagen {
+    white-space: nowrap;
+    position: absolute;
+    font-size: 20px;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+/* Footer */
+
+.footer {
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1F2937;
+    color: #fff;
+    font-family: Roboto, arial;
+}
+
+
+/* Responsive y burgir */
+
+input[type=checkbox] {
+    display: none;
+}
+
+.burgir {
+    display: none;
+    font-size: 24px;
+    user-select: none;
+}
+
+@media (max-width: 768) {
+
+.menu {
+    display: none;
+    position: absolute;
+    background-color: #1f2937;
+    color: #e5e7eb;
+    right: 0;
+    left: 0;
+    text-align: center;
+    padding: 16px 0;
+}
+
+.menu li:hover {
+    display: inline-block;
+    transition: 0.3s ease;
+}
+
+.menu li + li {
+    margin-top: 12px;
+}
+
+input [type=checkbox]:checked ~ .menu {
+    display: block;
+}
+
+.burgir {
+    display: block;
+}
+
+.dropdown {
+    left: 50%;
+    top: 30px;
+}
+
+}

@@ -1,1 +1,2 @@
-# DiegoDS30.github.io
+# web-design
+School assignment

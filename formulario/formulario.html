@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style-form.css">
+    <title>Formulario</title>
+</head>
+<body>
+
+    <div id="page-container">
+
+        <nav class="navbar">
+
+            <div class="logo"><a href="../index.html">KK</a></div>
+
+            <ul class="nav-links">
+
+                <input type="checkbox" id="checkbox-toggle">
+
+                <label for="checkbox-toggle" class="burgir">&#9776</label>
+
+                <div class="menu">
+
+                    <li><a href="../index.html">Home</a></li>
+
+                    <li class="formulario"><a href="#">Formulario</a></li>
+
+                    <li class="opcion2">
+
+                        <a href="#">Lenguajes de programacion</a>
+
+                        <ul class="dropdown">
+
+                            <li><a href="../javascript/js.html">JavaScript</a></li>
+
+                            <li><a href="../javascript/php.html">PHP</a></li>
+
+                        </ul>
+
+                    </li>
+
+                </div>
+
+            </ul>
+
+        </nav>
+
+        <form class="formulario-box">
+
+            <h1>Comentanos tu opinion!</h1>
+
+            <div class="formulario-input">
+                <label for="pnombre">
+                    Nombre
+                </label><br>
+                <input type="text" id="pnombre" for="pnombre" placeholder="Pepe Pepperoni"><br>
+            </div>
+
+            <div class="formulario-input">
+                <label for="email">
+                    e-mail
+                </label><br>
+                <input type="email" id="email" for="email" placeholder="pepe@pepardo.com"><br>
+                        
+            </div> 
+            
+            <div class="formulario-input">
+                <label for="fecha-d-n">
+                    Ingrese su fecha de nacimiento
+                </label><br>
+                <input type="date" id="fecha-d-n" for="fecha-d-n">
+            </div>
+            
+            <div class="formulario-input">
+                <label for="sexo">
+                    Sexo?
+                </label><br>
+                <input type="radio" id="sexo-m" for="sexo-m" name="sexo">Masculino
+                <input type="radio" id="sexo-f" for="sexo-f" name="sexo">Femenino
+                <input type="radio" id="no" for="no" name="sexo">No especificar<br>
+                <input type="radio" id="sexo-otro" for="sexo-otro" name="sexo">Otro
+                <input type="text" id="sexo-otro-t" for="sexo-otro-t" name="sexo" placeholder='Especifique'><br>
+            </div>
+
+            <div class="formulario-input">
+                <label for="pais">
+                    Pais de nacimiento.
+                </label><br>
+                <select id="pais" name="pais">
+                    <option value="Uruguay">Uruguay</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Brasil">Brasil</option>
+                    <option value="Chile">Chile</option>
+                </select>    
+            </div>
+
+            <div class="formulario-input">
+                <label for="mensaje">
+                    Deje su mensaje
+                </label><br>
+                <textarea name="mensaje" id="" cols="30" rows="3" placeholder="Que podemos mejorar?"></textarea>
+            </div>
+
+            <div class="formulario-boton">
+                <button>Enviar</button>
+            </div>
+
+        </form>
+        
+        <div class="footer">
+            <p>By Diego da Silva &#183; &#160; </p> <a href="mailto:diegodasilva30@gmail.com"> diegodasilva30@gmail.com</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
