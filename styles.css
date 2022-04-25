@@ -50,7 +50,7 @@ li {
 
 .menu {
     display: flex;
-    gap: 1em;
+    gap: 1rem;
     font-size: 18px;
 }
 
