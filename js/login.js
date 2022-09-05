@@ -10,6 +10,10 @@
         }
   
         form.classList.add('was-validated')
+
+        /* Saving the email value in the local storage. */
+        
+        localStorage.setItem('usuario', email.value);
       }, false)
     })
   })()
