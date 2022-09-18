@@ -39,9 +39,82 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="row">
+        <div class="col">
+          <h3 class="m-2 py-3" id="prodInfoTitle"></h3>
+          <hr class="d-none d-md-block my-3">
+        </div>
       </div>
+      <div class="row">
+  
+        <div class="col-7">
+          <p class="m-0"><strong>Precio</strong></p>
+          <p id="prodInfoPrice"></p>
+          <p class="m-0"><strong>Descripción</strong></p>
+          <p id="prodInfoDescription"></p>
+          <p class="m-0"><strong>Categoría</strong></p>
+          <p id="prodInfoCategory"></p>
+          <p class="m-0"><strong>Cantidad de vendidos</strong></p>
+          <p id="prodInfoSoldCount"></p>
+          <p><strong>Imágenes ilustrativas</strong></p>
+          <hr class="d-none d-md-block my-3">
+         
+          <div id="prodInfoCarouselImg" class="carousel slide" data-bs-ride="carousel">
+
+            <div class="carousel-indicators" id="prodInfoCarouselImgIndicators">
+            </div>
+
+            <div class="carousel-inner" id="prodInfoCarouselInner">
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#prodInfoCarouselImg" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#prodInfoCarouselImg" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
+  
+          </div>
+
+          <hr class="d-none d-md-block my-3">
+
+        </div>
+      </div>
+
+      <div class="row mt-2" id="prodComments">
+        <h4>Comentarios</h4>
+        <hr class="d-none d-md-block my-3">
+      </div>
+
+      <div class="row mt-2">
+        <h4>Comentar</h4>
+        <hr class="d-none d-md-block my-3">
+  
+        <div class="mb-3">
+          <form>
+            <label for="comentario" class="form-label">Tu opinión:</label>
+            <textarea class="form-control" id="comentario" rows="4" cols="15"></textarea>
+          <label class="form-label mt-2">Tu puntuación:</label>
+          <div class="col-3">
+            <select class="form-select" aria-label="Default select">
+              <option value="5" selected>5</option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+              <option value="1">1</option>
+            </select>
+        </form>
+          </div>
+        <div>
+          <button type="button" class="btn btn-secondary mt-4">Enviar comentario</button>
+        </div>
+        </div>
+
+      </div>
+
     </div>
   </main>
   <footer class="text-muted">
