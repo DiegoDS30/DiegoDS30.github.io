@@ -39,3 +39,38 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+/* Comprueba si el usuario esta loggeado o no. */
+
+let user = localStorage.getItem ('usuario');
+
+if (user != '') {
+
+    let mostrarUsuario = document.getElementById ('usuario');
+    mostrarUsuario.innerHTML = `<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <img src="/img/img_perfil.png" alt="" width="30" height="24"> ${localStorage.getItem("usuario")} 
+    </a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" id="cart" href="./cart.html">Mi carrito</a></li>
+      <li><a class="dropdown-item" id="profile" href="./my-profile.html">Mi perfil</a></li>
+      <li><a class="dropdown-item" id="logout" href="./login.html">Salir</a></li>
+    </ul>
+    </li>
+    `
+}
+
+if (user === null) {
+
+    location.href='./login.html';
+
+}
+
+
+/* Elima el usuario del local storage. */
+
+document.getElementById ('logout').addEventListener ('click', () => {
+
+    localStorage.removeItem ('usuario');
+
+})

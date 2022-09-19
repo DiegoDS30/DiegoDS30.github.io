@@ -1,6 +1,11 @@
 let prodInfo = {};
 let prodComments = {};
 
+function setProdID(id) {
+    localStorage.setItem("prodID", id);
+    window.location = "product-info.html"
+}
+
 document.addEventListener ('DOMContentLoaded', () => {
 
     getJSONData (PRODUCT_INFO_URL + localStorage.prodID + EXT_TYPE).then (function (resultObj) {
@@ -32,6 +37,7 @@ function showProdInfo() {
     document.getElementById("prodInfoSoldCount").innerHTML = `${prodInfo.soldCount}`;
 
     showProdImg ();
+    showProdRelated ();
     
 }
 
@@ -69,6 +75,27 @@ function showProdImg (){
         carouselInner.innerHTML += htmlContentToAppendCarouselInner;
     
     }
+}
+
+function showProdRelated () {
+    htmlContentToAppendRelatedProducts = "";
+
+    for (let i = 0; i < prodInfo.relatedProducts.length; i++) {
+        let product = prodInfo.relatedProducts [i];
+
+        htmlContentToAppendRelatedProducts += `
+            <div onclick="setProdID(${product.id})" class="list-group-item list-group-item-action cursor-active">
+                <div class="row">
+                    <div class="col">
+                        <img src="${product.image}" alt="${product.name}" class="img-thumbnail">
+                        <h4 class="mb-1">${product.name}</h4>
+                    </div>
+                </div>
+            </div>
+        `
+    }
+
+    document.getElementById('prodRelated').innerHTML = htmlContentToAppendRelatedProducts;
 }
 
 
