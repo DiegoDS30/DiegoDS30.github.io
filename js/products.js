@@ -216,9 +216,15 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 });
 
-/*
- * Desafiate 4  
-*/
+
+
+/**
+ * Desafiate 2
+ * 
+ * Toma el input del usuario, limpia la lista de productos e itera currentProductsArray,
+ * fijandose si el input esta incluido en el nombre del producto. Si lo esta lo agrega a la lista
+ * @param query - El input del usuario.
+ */
 
 let buscador = document.getElementById ('searchBar')
 

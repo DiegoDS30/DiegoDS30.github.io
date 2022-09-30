@@ -35,10 +35,58 @@ function showProdInfo() {
     document.getElementById("prodInfoDescription").innerHTML = `${prodInfo.description}`;
     document.getElementById("prodInfoCategory").innerHTML = `${prodInfo.category}`;
     document.getElementById("prodInfoSoldCount").innerHTML = `${prodInfo.soldCount} Vendidos`;
-
-    showProdImg ();
-    showProdRelated ();
     
+    showProdImg ();
+    showProdRelated ();  
+
+    /* 
+        ***NO HACER CASO A ESTA PARTE***
+
+    let sum = 0;
+
+    for (let i = 0; i < prodComments.length; i++) {
+
+        let prodScore = prodComments[i].score
+
+        sum += prodScore;
+
+    }
+
+    let avg = sum / prodComments.length;
+
+    <span class="fs-6">
+    <i class="fa fa-star" id="star2-1"></i>
+    <i class="fa fa-star" id="star2-2"></i>
+    <i class="fa fa-star" id="star2-3"></i>
+    <i class="fa fa-star" id="star2-4"></i>
+    <i class="fa fa-star" id="star2-5"></i>
+    </span>
+    let star6 = document.getElementById("star2-1");
+    let star7 = document.getElementById("star2-2");
+    let star8 = document.getElementById("star2-3");
+    let star9 = document.getElementById("star2-4");
+    let star0 = document.getElementById("star2-5");
+
+    if(avg >= 1) {
+        star6.className += " checked";
+    }
+        
+    if(avg >= 2) {
+        star7.className += " checked";
+    }
+        
+    if(avg >= 3) {
+        star8.className += " checked";
+    }
+        
+    if(avg >= 4) {
+        star9.className += " checked";
+    }
+        
+    if(avg >= 5) {
+        star0.className += " checked";
+    }  */
+
 }
 
 /**
@@ -107,7 +155,7 @@ function showProductComments(){
 
     /* Loop que va a ir agregando los comentarios al HTML. */
 
-    for(let i =0; i < prodComments.length; i++ ){
+    for(let i =0; i < prodComments.length; i++ ) {
         let productComment = prodComments[i];
 
         htmlContentToAppendProductComments += `
@@ -124,22 +172,6 @@ function showProductComments(){
         </li>
         `
 
-/*       
-        htmlContentToAppendProductComments += `
-        <div class="row">
-        <p><strong>${productComment.user}</strong> - <span>
-        <i class="fa fa-star" name="star-1"></i>
-        <i class="fa fa-star" name="star-2"></i>
-        <i class="fa fa-star" name="star-3"></i>
-        <i class="fa fa-star" name="star-4"></i>
-        <i class="fa fa-star" name="star-5"></i>
-        </span></p>
-        <p>${productComment.description}</p>
-        <small class="text-muted">Publicado el ${new Date(productComment.dateTime).toLocaleString()}</small>
-        </div>
-        <hr class="d-none d-md-block my-3">
-        `
-*/
     }
   
     document.getElementById("prodComments").innerHTML += htmlContentToAppendProductComments;
@@ -286,7 +318,6 @@ function addComment () {
     }
 
     document.getElementById ('prodComments').innerHTML += htmlContentToAppendComment;
-
     document.getElementById ('comentario').value = ''
     document.getElementById ('cal').value = '5'
 
