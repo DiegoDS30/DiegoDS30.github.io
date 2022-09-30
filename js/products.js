@@ -136,9 +136,11 @@ function showProductsList(){
             `
         }
     }
+
     document.getElementById("prod_category").innerHTML = currentProductsArrayCat.catName;
     document.getElementById("prod_category_p").innerHTML = "Verás aquí todos los productos de la categoría " + currentProductsArrayCat.catName;    
     document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
+
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -212,4 +214,42 @@ document.addEventListener("DOMContentLoaded", function(e){
     
     });
 
-});  
+});
+
+/*
+ * Desafiate 4  
+*/
+
+let buscador = document.getElementById ('searchBar')
+
+function searchProducts (query) {
+
+    let lista = document.getElementById ('prod-list-container')
+    lista.innerHTML = "";
+
+    currentProductsArray.map ((prod) => {
+
+        query.split(" ").map ((word) => {
+
+            if (prod.name.toLowerCase().includes(word.toLowerCase ())) {
+
+                lista.innerHTML += `
+                <div onclick="setProdID(${prod.id})" class="list-group-item list-group-item-action cursor-active">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="${prod.image}" alt="${prod.description}" class="img-thumbnail">
+                        </div>
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">${prod.name} - ${prod.currency} ${prod.cost}</h4>
+                            <small class="text-muted">${prod.soldCount} vendidos</small>
+                        </div>
+                        <p class="mb-1">${prod.description}</p>
+                        </div>
+                    </div>
+                </div>
+                `
+            }
+        })
+    })
+}

@@ -31,10 +31,10 @@ document.addEventListener ('DOMContentLoaded', () => {
 function showProdInfo() {
 
     document.getElementById("prodInfoTitle").innerHTML = `${prodInfo.name}`;
-    document.getElementById("prodInfoPrice").innerHTML =`${prodInfo.currency} ${prodInfo.cost}`;
+    document.getElementById("prodInfoCost").innerHTML = `${prodInfo.currency} ${prodInfo.cost}`;
     document.getElementById("prodInfoDescription").innerHTML = `${prodInfo.description}`;
     document.getElementById("prodInfoCategory").innerHTML = `${prodInfo.category}`;
-    document.getElementById("prodInfoSoldCount").innerHTML = `${prodInfo.soldCount}`;
+    document.getElementById("prodInfoSoldCount").innerHTML = `${prodInfo.soldCount} Vendidos`;
 
     showProdImg ();
     showProdRelated ();
@@ -43,9 +43,12 @@ function showProdInfo() {
 
 /**
  * Agarra la informacion de las imagenes del archivo JSON y las agrega al carrusel.
+ * 
+ * Desafiate 4
  */
 
-function showProdImg (){
+function showProdImg () {
+
     let htmlContentToAppendIndicators ="";
     let htmlContentToAppendCarouselInner = "";
     
@@ -58,7 +61,7 @@ function showProdImg (){
 
     carouselInner.innerHTML += `
     <div class="carousel-item active">
-        <img src="${prodInfo.images[0]}" class="d-block w-100" alt="30%">
+        <img src="${prodInfo.images[0]}" class="d-block img-fluid border rounded" alt="30%">
     </div>`
 
     for(let i = 1; i < prodInfo.images.length; i++){
@@ -68,7 +71,7 @@ function showProdImg (){
     
         htmlContentToAppendCarouselInner = `
         <div class="carousel-item">
-            <img src="${prodInfoImg}" class="d-block w-100" alt="30%">
+            <img src="${prodInfoImg}" class="d-block img-fluid border rounded" alt="30%">
         </div>`
     
         carouselIndi.innerHTML += htmlContentToAppendIndicators;
@@ -88,7 +91,7 @@ function showProdRelated () {
                 <div class="row">
                     <div class="col">
                         <img src="${product.image}" alt="${product.name}" class="img-thumbnail">
-                        <h4 class="mb-1">${product.name}</h4>
+                        <h4 class="mx-1 my-2">${product.name}</h4>
                     </div>
                 </div>
             </div>
@@ -108,19 +111,35 @@ function showProductComments(){
         let productComment = prodComments[i];
 
         htmlContentToAppendProductComments += `
-        <div class="row">
-        <p><strong>${productComment.user}</strong> - publicado el ${new Date(productComment.dateTime).toLocaleString()}</p>
-        <p>${productComment.description}</p>
-        <span>
+        <li class="list-group-item">
+        <p><strong>${productComment.user}</strong> - <span>
         <i class="fa fa-star" name="star-1"></i>
         <i class="fa fa-star" name="star-2"></i>
         <i class="fa fa-star" name="star-3"></i>
         <i class="fa fa-star" name="star-4"></i>
         <i class="fa fa-star" name="star-5"></i>
-        </span>
+        </span></p>
+        <p>${productComment.description}</p>
+        <small class="text-muted">Publicado el ${new Date(productComment.dateTime).toLocaleString()}</small>
+        </li>
+        `
+
+/*       
+        htmlContentToAppendProductComments += `
+        <div class="row">
+        <p><strong>${productComment.user}</strong> - <span>
+        <i class="fa fa-star" name="star-1"></i>
+        <i class="fa fa-star" name="star-2"></i>
+        <i class="fa fa-star" name="star-3"></i>
+        <i class="fa fa-star" name="star-4"></i>
+        <i class="fa fa-star" name="star-5"></i>
+        </span></p>
+        <p>${productComment.description}</p>
+        <small class="text-muted">Publicado el ${new Date(productComment.dateTime).toLocaleString()}</small>
         </div>
         <hr class="d-none d-md-block my-3">
         `
+*/
     }
   
     document.getElementById("prodComments").innerHTML += htmlContentToAppendProductComments;
@@ -175,3 +194,101 @@ function showProductComments(){
 
 
 }
+
+/*
+ * Desafiate 3
+*/
+
+function addComment () {
+
+    let htmlContentToAppendComment = '';
+    let comentario = document.getElementById ('comentario').value;
+    let puntaje = document.getElementById ('cal').value;
+
+   if (puntaje == 5) {
+        htmlContentToAppendComment += `
+        <div class="list-group-item">
+        <p><strong>${showUser [1]}</strong> - <span>
+        <i class="fa fa-star checked" name="star-1"></i>
+        <i class="fa fa-star checked" name="star-2"></i>
+        <i class="fa fa-star checked" name="star-3"></i>
+        <i class="fa fa-star checked" name="star-4"></i>
+        <i class="fa fa-star checked" name="star-5"></i>
+        </span></p>
+        <p>${comentario} </p>
+        <small class="text-muted">Publicado el ${new Date().toLocaleString()}</small>
+        </div>
+        `
+    }
+
+    if (puntaje == 4) {
+        htmlContentToAppendComment += `
+        <div class="list-group-item">
+        <p><strong>${showUser [1]}</strong> - <span>
+        <i class="fa fa-star checked" name="star-1"></i>
+        <i class="fa fa-star checked" name="star-2"></i>
+        <i class="fa fa-star checked" name="star-3"></i>
+        <i class="fa fa-star checked" name="star-4"></i>
+        <i class="fa fa-star" name="star-5"></i>
+        </span></p>
+        <p>${comentario} </p>
+        <small class="text-muted">Publicado el ${new Date().toLocaleString()}</small>
+        </div>
+        `
+    }
+
+    if (puntaje == 3) {
+        htmlContentToAppendComment += `
+        <div class="list-group-item">
+        <p><strong>${showUser [1]}</strong> - <span>
+        <i class="fa fa-star checked" name="star-1"></i>
+        <i class="fa fa-star checked" name="star-2"></i>
+        <i class="fa fa-star checked" name="star-3"></i>
+        <i class="fa fa-star" name="star-4"></i>
+        <i class="fa fa-star" name="star-5"></i>
+        </span></p>
+        <p>${comentario} </p>
+        <small class="text-muted">Publicado el ${new Date().toLocaleString()}</small>
+        </div>
+        `
+    }
+
+    if (puntaje == 2) {
+        htmlContentToAppendComment += `
+        <div class="list-group-item">
+        <p><strong>${showUser [1]}</strong> - <span>
+        <i class="fa fa-star checked" name="star-1"></i>
+        <i class="fa fa-star checked" name="star-2"></i>
+        <i class="fa fa-star" name="star-3"></i>
+        <i class="fa fa-star" name="star-4"></i>
+        <i class="fa fa-star" name="star-5"></i>
+        </span></p>
+        <p>${comentario} </p>
+        <small class="text-muted">Publicado el ${new Date().toLocaleString()}</small>
+        </div>
+        `
+    }
+
+    if (puntaje == 1) {
+        htmlContentToAppendComment += `
+        <div class="list-group-item">
+        <p><strong>${showUser [1]}</strong> - <span>
+        <i class="fa fa-star checked" name="star-1"></i>
+        <i class="fa fa-star" name="star-2"></i>
+        <i class="fa fa-star" name="star-3"></i>
+        <i class="fa fa-star" name="star-4"></i>
+        <i class="fa fa-star" name="star-5"></i>
+        </span></p>
+        <p>${comentario} </p>
+        <small class="text-muted">Publicado el ${new Date().toLocaleString()}</small>
+        </div>
+        `
+    }
+
+    document.getElementById ('prodComments').innerHTML += htmlContentToAppendComment;
+
+    document.getElementById ('comentario').value = ''
+    document.getElementById ('cal').value = '5'
+
+}
+

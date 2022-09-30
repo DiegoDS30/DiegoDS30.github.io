@@ -4,6 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="./img/icon.png">
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -13,7 +14,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,43 +23,26 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
+            <a class="nav-link active" href="categories.html">Categorías</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
+            <a class="nav-link active" href="sell.html">Vender</a>
           </li>
           <li class="nav-item" id="usuario">
-            <a class="nav-link" href="login.html">Login</a>
+            <a class="nav-link active" href="login.html">Login</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <main>
+  <main class="py-5 bg-light">
     <div class="container">
-      <div class="row">
+      <div class="row"> 
         <div class="col">
-          <h3 class="m-2 py-3" id="prodInfoTitle"></h3>
-          <hr class="d-none d-md-block my-3">
-        </div>
-      </div>
-      <div class="row">
-  
-        <div class="col-7">
-          <p class="m-0"><strong>Precio</strong></p>
-          <p id="prodInfoPrice"></p>
-          <p class="m-0"><strong>Descripción</strong></p>
-          <p id="prodInfoDescription"></p>
-          <p class="m-0"><strong>Categoría</strong></p>
-          <p id="prodInfoCategory"></p>
-          <p class="m-0"><strong>Cantidad de vendidos</strong></p>
-          <p id="prodInfoSoldCount"></p>
-          <p><strong>Imágenes ilustrativas</strong></p>
-          <hr class="d-none d-md-block my-3">
-         
+        
           <div id="prodInfoCarouselImg" class="carousel slide" data-bs-ride="carousel">
 
             <div class="carousel-indicators" id="prodInfoCarouselImgIndicators">
@@ -76,40 +60,69 @@
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Siguiente</span>
             </button>
-  
-          </div>
 
-          <hr class="d-none d-md-block my-3">
+          </div>
 
         </div>
+
+        <div class="col">
+
+          <!-- <h3 class="my-2 py-2" id="prodInfoTitle"></h3>
+          <small id="prodInfoSoldCount" class="text-muted"></small>
+          <hr class="d-none d-md-block my-2">
+          <p id="prodInfoPrice"></p>
+          <p class="my-1"><strong>Descripción</strong></p>
+          <p id="prodInfoDescription"></p>
+          <p class="my-1"><strong>Categoría</strong></p>
+
+              Como todavia tengo el CatID guardado en el localStorage
+              Puedo volver a la pagina de productos sin dar muchas vueltas
+
+          <a id="prodInfoCategory" href="products.html" class="text-decoration-none"></a> -->
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title my-2 py-2 fw-bold" id="prodInfoTitle"></h5>
+              <h4 class="card-subtitle pb-3" id="prodInfoCost"></h4>
+              <p class="card-text mb-2 text-muted" id="prodInfoSoldCount"></p>
+              <hr class="d-none d-md-block my-3">
+              <p class="my-2 card-text"><strong>Descripción</strong></p>
+              <p id="prodInfoDescription" class="card-text"></p>
+              <p class="my-2 card-text"><strong>Categoría</strong></p>
+              <a href="products.html" class="card-link text-decoration-none" id="prodInfoCategory">Another link</a>
+            </div>
+          </div>
+        
+        </div>
+
+        <hr class="d-none d-md-block my-3">
+
       </div>
 
-      <div class="row mt-2" id="prodComments">
-        <h4>Comentarios</h4>
-        <hr class="d-none d-md-block my-3">
+      <div class="row">
+        <h4 class="py-3">Opiniones del producto</h4>
+        <ul class="list-group" id="prodComments"></ul>
       </div>
 
-      <div class="row mt-2">
-        <h4>Comentar</h4>
-        <hr class="d-none d-md-block my-3">
+      <div class="row pt-2">
+
+        <h4 class="py-3">Dejanos tu comentario!</h4>
   
         <div class="mb-3">
-          <form>
+          <form action="javascript:void(0);" onsubmit="addComment()">
             <label for="comentario" class="form-label">Tu opinión:</label>
             <textarea class="form-control" id="comentario" rows="4" cols="15"></textarea>
-          <label class="form-label mt-2">Tu puntuación:</label>
-          <div class="col-3">
-            <select class="form-select" aria-label="Default select">
-              <option value="5" selected>5</option>
-              <option value="4">4</option>
-              <option value="3">3</option>
-              <option value="2">2</option>
-              <option value="1">1</option>
-            </select>
-        </form>
-          </div>
-        <div>
-          <button type="button" class="btn btn-secondary mt-4">Enviar comentario</button>
+            <label class="form-label mt-2">Tu puntuación:</label>
+            <div class="col-3">
+              <select class="form-select" aria-label="Default select" name="cal" id="cal">
+                <option value="5" selected>5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+              </select>
+              <button type="submit" class="btn btn-secondary mt-4" id="boton">Enviar comentario</button>
+          </form>
         </div>
       </div>
 

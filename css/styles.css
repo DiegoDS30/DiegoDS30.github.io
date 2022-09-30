@@ -186,7 +186,12 @@ a.custom-card:hover {
 }
 
 .checked {
-  color: orange;
+  color: rgba(101,156,186,255);
+}
+
+.navbar-custom {
+  color: white;
+  background-color: rgba(119,159,152,255);
 }
 
 .form-signin {

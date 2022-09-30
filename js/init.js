@@ -43,18 +43,21 @@ let getJSONData = function(url){
 /* Comprueba si el usuario esta loggeado o no. */
 
 let user = localStorage.getItem ('usuario');
+let showUser = /^([^]+)@(.+)$/.exec(user);
 
 if (user != '') {
 
     let mostrarUsuario = document.getElementById ('usuario');
-    mostrarUsuario.innerHTML = `<li class="nav-item dropdown">
+    mostrarUsuario.innerHTML = `
+    <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <img src="/img/img_perfil.png" alt="" width="30" height="24"> ${localStorage.getItem("usuario")} 
+      ${showUser[1]} 
     </a>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" id="cart" href="./cart.html">Mi carrito</a></li>
-      <li><a class="dropdown-item" id="profile" href="./my-profile.html">Mi perfil</a></li>
-      <li><a class="dropdown-item" id="logout" href="./login.html">Salir</a></li>
+      <li><a class="dropdown-item" id="profile" href="./my-profile.html"><span><i class="fa fa-user fa-fw"></i></span> Mi perfil</a></li>
+      <li><a class="dropdown-item" id="cart" href="./cart.html"><span><i class="fa fa-shopping-cart fa-fw"></i></span> Mi carrito</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" id="logout" href="./login.html"><span><i class="fa fa-times-circle fa-fw"></i></span> Cerrar Sesión</a></li>
     </ul>
     </li>
     `
