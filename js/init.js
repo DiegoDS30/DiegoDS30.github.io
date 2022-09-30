@@ -57,7 +57,7 @@ if (user != '') {
       <li><a class="dropdown-item" id="profile" href="./my-profile.html"><span><i class="fa fa-user fa-fw"></i></span> Mi perfil</a></li>
       <li><a class="dropdown-item" id="cart" href="./cart.html"><span><i class="fa fa-shopping-cart fa-fw"></i></span> Mi carrito</a></li>
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" id="logout" href="./login.html"><span><i class="fa fa-times-circle fa-fw"></i></span> Cerrar Sesión</a></li>
+      <li><a class="dropdown-item" id="logout" href="./login.html"><span><i class="fa fa-sign-out-alt fa-fw"></i></span> Cerrar Sesión</a></li>
     </ul>
     </li>
     `

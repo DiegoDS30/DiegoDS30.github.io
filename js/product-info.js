@@ -112,15 +112,15 @@ function showProductComments(){
 
         htmlContentToAppendProductComments += `
         <li class="list-group-item">
-        <p><strong>${productComment.user}</strong> - <span>
+        <p><strong>${productComment.user}</strong> - <span class="float-end">
         <i class="fa fa-star" name="star-1"></i>
         <i class="fa fa-star" name="star-2"></i>
         <i class="fa fa-star" name="star-3"></i>
         <i class="fa fa-star" name="star-4"></i>
         <i class="fa fa-star" name="star-5"></i>
         </span></p>
-        <p>${productComment.description}</p>
-        <small class="text-muted">Publicado el ${new Date(productComment.dateTime).toLocaleString()}</small>
+        <p class="fst-italic ps-5">${productComment.description}</p>
+        <small class="text-muted float-end">Publicado el ${new Date(productComment.dateTime).toLocaleString()}</small>
         </li>
         `
 
@@ -208,15 +208,15 @@ function addComment () {
    if (puntaje == 5) {
         htmlContentToAppendComment += `
         <div class="list-group-item">
-        <p><strong>${showUser [1]}</strong> - <span>
+        <p><strong>${showUser [1]}</strong> - <span class="float-end">
         <i class="fa fa-star checked" name="star-1"></i>
         <i class="fa fa-star checked" name="star-2"></i>
         <i class="fa fa-star checked" name="star-3"></i>
         <i class="fa fa-star checked" name="star-4"></i>
         <i class="fa fa-star checked" name="star-5"></i>
         </span></p>
-        <p>${comentario} </p>
-        <small class="text-muted">Publicado el ${new Date().toLocaleString()}</small>
+        <p class="fst-italic ps-5">${comentario} </p>
+        <small class="text-muted float-end">Publicado el ${new Date().toLocaleString()}</small>
         </div>
         `
     }
@@ -224,15 +224,15 @@ function addComment () {
     if (puntaje == 4) {
         htmlContentToAppendComment += `
         <div class="list-group-item">
-        <p><strong>${showUser [1]}</strong> - <span>
+        <p><strong>${showUser [1]}</strong> - <span class="float-end">
         <i class="fa fa-star checked" name="star-1"></i>
         <i class="fa fa-star checked" name="star-2"></i>
         <i class="fa fa-star checked" name="star-3"></i>
         <i class="fa fa-star checked" name="star-4"></i>
         <i class="fa fa-star" name="star-5"></i>
         </span></p>
-        <p>${comentario} </p>
-        <small class="text-muted">Publicado el ${new Date().toLocaleString()}</small>
+        <p class="fst-italic ps-5">${comentario} </p>
+        <small class="text-muted float-end">Publicado el ${new Date().toLocaleString()}</small>
         </div>
         `
     }
@@ -240,15 +240,15 @@ function addComment () {
     if (puntaje == 3) {
         htmlContentToAppendComment += `
         <div class="list-group-item">
-        <p><strong>${showUser [1]}</strong> - <span>
+        <p><strong>${showUser [1]}</strong> - <span class="float-end">
         <i class="fa fa-star checked" name="star-1"></i>
         <i class="fa fa-star checked" name="star-2"></i>
         <i class="fa fa-star checked" name="star-3"></i>
         <i class="fa fa-star" name="star-4"></i>
         <i class="fa fa-star" name="star-5"></i>
         </span></p>
-        <p>${comentario} </p>
-        <small class="text-muted">Publicado el ${new Date().toLocaleString()}</small>
+        <p class="fst-italic ps-5">${comentario} </p>
+        <small class="text-muted float-end">Publicado el ${new Date().toLocaleString()}</small>
         </div>
         `
     }
@@ -256,15 +256,15 @@ function addComment () {
     if (puntaje == 2) {
         htmlContentToAppendComment += `
         <div class="list-group-item">
-        <p><strong>${showUser [1]}</strong> - <span>
+        <p><strong>${showUser [1]}</strong> - <span class="float-end">
         <i class="fa fa-star checked" name="star-1"></i>
         <i class="fa fa-star checked" name="star-2"></i>
         <i class="fa fa-star" name="star-3"></i>
         <i class="fa fa-star" name="star-4"></i>
         <i class="fa fa-star" name="star-5"></i>
         </span></p>
-        <p>${comentario} </p>
-        <small class="text-muted">Publicado el ${new Date().toLocaleString()}</small>
+        <p class="fst-italic ps-5">${comentario} </p>
+        <small class="text-muted float-end">Publicado el ${new Date().toLocaleString()}</small>
         </div>
         `
     }
@@ -272,15 +272,15 @@ function addComment () {
     if (puntaje == 1) {
         htmlContentToAppendComment += `
         <div class="list-group-item">
-        <p><strong>${showUser [1]}</strong> - <span>
+        <p><strong>${showUser [1]}</strong> - <span class="float-end">
         <i class="fa fa-star checked" name="star-1"></i>
         <i class="fa fa-star" name="star-2"></i>
         <i class="fa fa-star" name="star-3"></i>
         <i class="fa fa-star" name="star-4"></i>
         <i class="fa fa-star" name="star-5"></i>
         </span></p>
-        <p>${comentario} </p>
-        <small class="text-muted">Publicado el ${new Date().toLocaleString()}</small>
+        <p class="fst-italic ps-5">${comentario} </p>
+        <small class="text-muted float-end">Publicado el ${new Date().toLocaleString()}</small>
         </div>
         `
     }
