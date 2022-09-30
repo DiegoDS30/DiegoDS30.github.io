@@ -141,3 +141,35 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 });
+
+function searchCategory (query) {
+
+    let lista = document.getElementById ('cat-list-container')
+    lista.innerHTML = "";
+
+    currentCategoriesArray.map ((cat) => {
+
+        query.split(" ").map ((word) => {
+
+            if (cat.name.toLowerCase().includes(word.toLowerCase ())) {
+
+                lista.innerHTML += `
+                <div onclick="setCatID(${cat.id})" class="list-group-item list-group-item-action cursor-active">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="${cat.imgSrc}" alt="${cat.description}" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">${cat.name}</h4>
+                            <small class="text-muted">${cat.productCount} artículos</small>
+                        </div>
+                        <p class="mb-1">${cat.description}</p>
+                    </div>
+                </div>
+            </div>
+                `
+            }
+        })
+    })
+}
