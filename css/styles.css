@@ -189,6 +189,10 @@ a.custom-card:hover {
   color: rgba(101,156,186,255);
 }
 
+.delete {
+  color: rgb(228, 58, 58);
+}
+
 .navbar-custom {
   color: white;
   background-color: rgba(119,159,152,255);
@@ -204,4 +208,14 @@ a.custom-card:hover {
   margin: auto;
   margin-top: 10%;
   text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }

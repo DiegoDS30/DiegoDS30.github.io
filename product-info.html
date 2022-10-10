@@ -67,24 +67,17 @@
 
         <div class="col">
 
-          <!-- <h3 class="my-2 py-2" id="prodInfoTitle"></h3>
-          <small id="prodInfoSoldCount" class="text-muted"></small>
-          <hr class="d-none d-md-block my-2">
-          <p id="prodInfoPrice"></p>
-          <p class="my-1"><strong>Descripción</strong></p>
-          <p id="prodInfoDescription"></p>
-          <p class="my-1"><strong>Categoría</strong></p>
-
-              Como todavia tengo el CatID guardado en el localStorage
-              Puedo volver a la pagina de productos sin dar muchas vueltas
-
-          <a id="prodInfoCategory" href="products.html" class="text-decoration-none"></a> -->
-
           <div class="card">
-            <div class="card-body">
-              <h4 class="card-title my-2 py-2 fw-bold" id="prodInfoTitle"></h4>
-              <h3 class="card-subtitle pb-3" id="prodInfoCost"></h3>
-              <p class="card-text mb-2 text-muted" id="prodInfoSoldCount"></p>
+            <div class="card-body row">
+              <div class="col">
+                <h4 class="card-title my-2 py-2 fw-bold" id="prodInfoTitle"></h4>
+                <h3 class="card-subtitle pb-3" id="prodInfoCost"></h3>
+                <p class="card-text mb-2 text-muted" id="prodInfoSoldCount"></p>
+              </div>
+              <div class="col-auto my-3">
+                <span><i class="far fa-lg fa-heart pe-2"></i></span>
+                <button type="button" class="btn btn-primary" id="liveToastBtn">Agregar al carrito!</button>
+              </div>
               <hr class="d-none d-md-block my-3">
               <p class="my-2 card-text"><strong>Descripción</strong></p>
               <p id="prodInfoDescription" class="card-text"></p>
@@ -139,6 +132,20 @@
       <div class="list-group list-group-horizontal" id="prodRelated">
       </div>
 
+    </div>
+
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+      <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto">Agregado al carrito!</strong>
+          <small>Justo ahora</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          <p>El articulo se ha agregado a su carro de compras! Para verlo presione el siguiente enlace:</p>
+          <a href="cart.html" class="btn btn-primary btn-sm" role="button">Carrito</a>
+        </div>
+      </div>
     </div>
 
     </div>

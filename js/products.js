@@ -126,7 +126,7 @@ function showProductsList(){
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">${products.name} - ${products.currency} ${products.cost}</h4>
+                            <h4 class="mb-1">${products.name} - ${products.currency} ${(products.cost).toLocaleString()}</h4>
                             <small class="text-muted">${products.soldCount} vendidos</small>
                         </div>
                         <p class="mb-1">${products.description}</p>
@@ -247,7 +247,7 @@ function searchProducts (query) {
                         </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">${prod.name} - ${prod.currency} ${prod.cost}</h4>
+                            <h4 class="mb-1">${prod.name} - ${prod.currency} ${(prod.cost).toLocaleString()}</h4>
                             <small class="text-muted">${prod.soldCount} vendidos</small>
                         </div>
                         <p class="mb-1">${prod.description}</p>

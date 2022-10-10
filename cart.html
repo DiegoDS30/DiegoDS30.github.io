@@ -37,12 +37,75 @@
       </div>
     </div>
   </nav>
-  <main>
+  <main class="bg-light">
+
+    <div class="text-center p-4">
+      <h2>Carrito de compras</h2>
+    </div>
+
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="row">
+
+        <h3>Artículos</h3>
+          <hr class="d-none d-md-block mb-3">
+          <div class="list-group text-center" id="cart-list-container">
+        </div>
+      </div>
+
+      <div class="row">
+        <hr class="d-none d-md-block mt-3">
+        <div class="col">
+          <h3>Dirección de envío</h3>
+          <form class="row g-4 ">
+            <div class="col-md-6">
+              <label for="direccion" class="form-label">Dirección</label>
+              <input type="text" class="form-control" id="direccion" placeholder="Av. Italia">
+            </div>
+            <div class="col-md-6">
+              <label for="numero" class="form-label">Número</label>
+              <input type="number" class="form-control" id="numero" placeholder="6201">
+            </div>
+            <div class="col-md-6">
+              <label for="esquina" class="form-label">Esquina</label>
+              <input type="text" class="form-control" id="esquina" placeholder="Bolonia">
+            </div>
+            <div class="col-md-6">
+              <label for="telefono" class="form-label">Telefono</label>
+              <input type="number" class="form-control" id="telefono" placeholder="0800 2342">
+            </div>
+            <div class="col-12 pb-5">
+              <button type="submit" class="btn btn-primary">Comprar!</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="col">
+          <h3>Tipo de envio</h3>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="envio" id="premium" value="1.15" checked>
+            <label class="form-check-label" for="premium">
+              Premium 2 a 5 días (15%)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="envio" id="express" value="1.07">
+            <label class="form-check-label" for="express">
+              Express 5 a 8 días (7%)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="envio" id="standard" value="1.05">
+            <label class="form-check-label" for="standard">
+              Standard 12 a 15 días (5%)
+            </label>
+          </div>
+          <div class="pt-5 text-end"><h4 id="total"></h4></div>
+        </div>
+      
       </div>
     </div>
+
+
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -54,6 +117,11 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+  <div class="alert alert-warning alert-dismissable fade d-flex align-items-center" role="alert" id="alert">
+    <span><i class="fa fa-info-circle me-2"></i></span> 
+    <p class="m-0">Lo sentimos pero este articulo no se pude borrar, ya que es un elemento de prueba</p>
+    <button class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

@@ -31,7 +31,7 @@ document.addEventListener ('DOMContentLoaded', () => {
 function showProdInfo() {
 
     document.getElementById("prodInfoTitle").innerHTML = `${prodInfo.name}`;
-    document.getElementById("prodInfoCost").innerHTML = `${prodInfo.currency} ${prodInfo.cost}`;
+    document.getElementById("prodInfoCost").innerHTML = `${prodInfo.currency} ${prodInfo.cost.toLocaleString()}`;
     document.getElementById("prodInfoDescription").innerHTML = `${prodInfo.description}`;
     document.getElementById("prodInfoCategory").innerHTML = `${prodInfo.category}`;
     document.getElementById("prodInfoSoldCount").innerHTML = `${prodInfo.soldCount} Vendidos`;
@@ -155,7 +155,7 @@ function showProductComments(){
 
     /* Loop que va a ir agregando los comentarios al HTML. */
 
-    for(let i =0; i < prodComments.length; i++ ) {
+    for(let i = 0; i < prodComments.length; i++ ) {
         let productComment = prodComments[i];
 
         htmlContentToAppendProductComments += `
@@ -323,3 +323,38 @@ function addComment () {
 
 }
 
+
+document.getElementById('liveToastBtn').onclick = () => {
+    var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+    var toastList = toastElList.map(function (toastEl) {
+        return new bootstrap.Toast(toastEl, {
+            animation: true,
+            autohide: true,
+            delay: 7000
+          })
+    });
+    toastList.forEach(toast => toast.show());
+
+    let art = JSON.parse(localStorage.getItem('cartArts')) || [];
+    let addArt = {
+        'id': prodInfo.id,
+        'name': prodInfo.name,
+        'count': 1,
+        'unitCost': prodInfo.cost,
+        'currency': prodInfo.currency,
+        'image': prodInfo.images[0]
+    };
+
+    if (JSON.stringify(art).includes(JSON.stringify(addArt.id))) {
+
+        let i = art.findIndex((art) => art.id == addArt.id)
+        art[i].count++;
+
+    } else {
+
+        art.push(addArt);
+
+    }
+
+    localStorage.setItem('cartArts', JSON.stringify(art));
+}
