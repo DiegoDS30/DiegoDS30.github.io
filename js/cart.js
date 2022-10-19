@@ -2,9 +2,13 @@ let cartArticles = [];
 let jsonArticles = [];
 let localArticles = JSON.parse(localStorage.getItem('cartArts')) || [];
 let total = 0;
-
+let envio = 0;
+let msg = '';
 let radios = document.querySelectorAll('input[name="envio"]');
-let radioCheckeado = document.querySelector('input[name="envio"]:checked')
+let radioCheckeado = document.querySelector('input[name="envio"]:checked');
+let pagoCC = document.getElementById ('radioPagoCC');
+let pagoBank = document.getElementById ('radioPagoBanco');
+let pagos = document.querySelectorAll('input[name="radioPago"]');
 
 const dolar = 41; // Cotizacion al 10/22, hay una api gratis para esto pero limitada a solicitudes por mes, asi que toca hardcodear
 
@@ -23,6 +27,10 @@ for (let boton of radios) {
     boton.addEventListener ('change', calcTotal)
 }
 
+/*for (let boton of pagos) {
+    boton.addEventListener ('change', desactivar)
+}*/
+
 function setProdID(id) {
     localStorage.setItem("prodID", id);
     window.location = 'product-info.html'
@@ -39,6 +47,12 @@ document.addEventListener ('DOMContentLoaded', () => {
             radioCheckeado.dispatchEvent(change);
         }
     })
+
+    getJSONData (CART_BUY_URL).then (function (resultObj) {
+        if (resultObj.status === 'ok') {
+            msg = resultObj.data.msg;
+        }
+    }) 
 });
 
 function showCart () {
@@ -90,6 +104,7 @@ function showCart () {
 function calcSubtotal (id, valor) {
 
     let inputT = document.getElementById(`${id}`);
+    radioCheckeado = document.querySelector('input[name="envio"]:checked')
 
     let articulo = cartArticles.find ((art) => art.id == id);
     let articuloIndex = cartArticles.findIndex((art) => art.id == id);
@@ -105,23 +120,30 @@ function calcSubtotal (id, valor) {
 }
 
 /**
- * calcula el total del carrito, si la moneda esta en dolares, la pasa a pesos.
+ * calcula el total del carrito, si la moneda esta en pesos, la pasa a dolares.
  */
 function calcTotal () {
 
-    total = 0
+    radioCheckeado = document.querySelector('input[name="envio"]:checked')
+    total = 0;
+    envio = 0;
 
     for (let i = 0; i < cartArticles.length; i++) {
         article = cartArticles[i];
 
-        if (article.currency === 'USD') {
+        if (article.currency !== 'USD') {
             total += (article.count * article.unitCost) * dolar
         } else {
-            total += article.count * article.unitCost;
+            total += article.count * article.unitCost; 
         }
+    
     }
 
-    document.getElementById('total').innerHTML = `Su total es de: <strong> UYU ${(Math.round(total * parseFloat(this.value))).toLocaleString()}</strong>`
+    envio = total * parseFloat(this.value);
+
+    document.getElementById('subtotal').innerHTML = `USD ${(Math.round(total)).toLocaleString()}`
+    document.getElementById('envioCosto').innerHTML = `USD ${(Math.round(envio)).toLocaleString()}`
+    document.getElementById('total').innerHTML = `USD ${(Math.round(total + envio)).toLocaleString()}`
 
 }
 
@@ -159,3 +181,60 @@ function delArticle (id) {
     }
 
 }
+
+pagoCC.addEventListener ('click', () => {
+    document.getElementById ('ccNro').disabled = false;
+    document.getElementById ('ccSeg').disabled = false;
+    document.getElementById ('ccDate').disabled = false;
+
+    document.getElementById ('bankAcc').disabled = true;
+
+    document.getElementById ('metodo').innerHTML = 'Tarjeta de credito'
+});
+
+pagoBank.addEventListener ('click', () => {
+    document.getElementById ('ccNro').disabled = true;
+    document.getElementById ('ccSeg').disabled = true;
+    document.getElementById ('ccDate').disabled = true;
+
+    document.getElementById ('bankAcc').disabled = false;
+
+    document.getElementById ('metodo').innerHTML = 'Transferencia bancaria'
+});
+
+// Con AJAX puedo evitar que la pagina recarge al enviar el formulario,
+// no hay otra manera con JS puro, asi que timeout
+
+/* 
+No se donde ponerlo xd
+
+setTimeout (() => {
+
+            document.getElementById("exito").innerHTML = msg
+            document.getElementById("exito").classList.add("show");
+
+                setTimeout (() => {
+
+                    document.getElementById("exito").classList.remove("show");
+
+            }, 4000)
+
+          }, 8000)
+
+*/
+
+(function () {
+    'use strict'
+    const forms = document.querySelectorAll('.needs-validation')
+    Array.from(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated')
+
+        }, false)
+      })
+    })()

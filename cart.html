@@ -54,54 +54,159 @@
 
       <div class="row">
         <hr class="d-none d-md-block mt-3">
-        <div class="col">
+
+        <form action="" class="row needs-validation" method="get" autocomplete="off" novalidate>
+
+        <div class="col-6">
+
           <h3>Dirección de envío</h3>
-          <form class="row g-4 ">
+
+          <div class="row g-4">
             <div class="col-md-6">
               <label for="direccion" class="form-label">Dirección</label>
-              <input type="text" class="form-control" id="direccion" placeholder="Av. Italia">
+              <input type="text" class="form-control" id="direccion" placeholder="Av. Italia" required>
+              <div class="invalid-feedback">Ingrese una direccion correcta</div>
             </div>
             <div class="col-md-6">
               <label for="numero" class="form-label">Número</label>
-              <input type="number" class="form-control" id="numero" placeholder="6201">
+              <input type="number" class="form-control" id="numero" placeholder="6201" required>
+              <div class="invalid-feedback">Ingrese un numero de direccion correcto</div>
             </div>
             <div class="col-md-6">
               <label for="esquina" class="form-label">Esquina</label>
-              <input type="text" class="form-control" id="esquina" placeholder="Bolonia">
+              <input type="text" class="form-control" id="esquina" placeholder="Bolonia" required>
+              <div class="invalid-feedback">Ingrese una esquina correcta</div>
             </div>
             <div class="col-md-6">
               <label for="telefono" class="form-label">Telefono</label>
-              <input type="number" class="form-control" id="telefono" placeholder="0800 2342">
+              <input type="number" class="form-control" id="telefono" placeholder="0800 2342" required>
+              <div class="invalid-feedback">Ingrese un telefono correcto</div>
             </div>
-            <div class="col-12 pb-5">
-              <button type="submit" class="btn btn-primary">Comprar!</button>
-            </div>
-          </form>
+          </div>
         </div>
 
-        <div class="col">
+        <div class="col-6">
           <h3>Tipo de envio</h3>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="envio" id="premium" value="1.15" checked>
+            <input class="form-check-input" type="radio" name="envio" id="premium" value="0.15" checked required>
             <label class="form-check-label" for="premium">
               Premium 2 a 5 días (15%)
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="envio" id="express" value="1.07">
+            <input class="form-check-input" type="radio" name="envio" id="express" value="0.07" required>
             <label class="form-check-label" for="express">
               Express 5 a 8 días (7%)
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="envio" id="standard" value="1.05">
+            <input class="form-check-input" type="radio" name="envio" id="standard" value="0.05" required>
             <label class="form-check-label" for="standard">
               Standard 12 a 15 días (5%)
             </label>
           </div>
-          <div class="pt-5 text-end"><h4 id="total"></h4></div>
         </div>
       
+        <hr class="d-none d-md-block mt-3">
+
+        <div>
+
+          <h4>Costos</h4>
+
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Subtotal</h6>
+                <small class="text-muted">Costo unitario del produtco por cantidad</small>
+              </div>
+              <span class="text-muted" id="subtotal">-</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Costo de envio</h6>
+                <small class="text-muted">Segun el tipo de envio</small>
+              </div>
+              <span class="text-muted" id="envioCosto">-</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total (en U$S)</span>
+              <strong id="total">-</strong>
+            </li>
+          </ul>
+
+        </div>
+
+        <hr class="d-none d-md-block mt-3">
+
+        <h4>Forma de pago</h4>
+
+        <div class="d-flex">
+          <p id="metodo" class="mb-0 pe-2 py-2 fw-bold">No ha seleccionado</p>
+          <a href="" data-bs-toggle="modal" data-bs-target="#formaDePago" class="p-2">Seleccionar</a></p>
+        </div>
+
+        <div id="invalido" class="invalid-feedback">Debe seleccionar una forma de pago</div>
+
+        <div class="modal fade" id="formaDePago" tabindex="-1" aria-labelledby="modalPago" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5">Forma de pago</h1>
+              </div>
+              <div class="modal-body">
+
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="radioPago" id="radioPagoCC" value="1" required>
+                  <label class="form-check-label" for="radioPagoCC">
+                    Tarjeta de credito
+                  </label>
+                </div>
+
+                <hr class="d-none d-md-block my-3">
+
+                <div class="row mb-3">
+                  <div class="col-6">
+                    <label for="ccNro" class="form-label">Numero de tarjeta</label>
+                    <input type="number" class="form-control" id="ccNro" required>
+                  </div>
+                  <div class="col-6">
+                    <label for="ccSeg" class="form-label">Codigo de seg.</label>
+                    <input type="number" class="form-control" id="ccSeg" required>
+                  </div>
+                  <div class="col-6">
+                    <label for="ccDate" class="form-label">Vencimiento (MM/AA)</label>
+                    <input type="month" class="form-control" id="ccDate" required>
+                  </div>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="radioPago" id="radioPagoBanco" value="2" required>
+                  <label class="form-check-label" for="radioPagoBanco">
+                    Transeferencia bancaria
+                  </label>
+                </div>
+
+                <hr class="d-none d-md-block my-3">
+
+                <div class="col-6">
+                  <label for="bankAcc" class="form-label">Numero de cuenta</label>
+                  <input type="number" class="form-control" id="bankAcc" required>
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col py-3">
+          <button type="submit" class="btn btn-primary">Finalizar Compra!</button>
+        </div> 
+
+      </form>
+
       </div>
     </div>
 
@@ -120,6 +225,10 @@
   <div class="alert alert-warning alert-dismissable fade d-flex align-items-center" role="alert" id="alert">
     <span><i class="fa fa-info-circle me-2"></i></span> 
     <p class="m-0">Lo sentimos pero este articulo no se pude borrar, ya que es un elemento de prueba</p>
+    <button class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <div class="alert alert-success alert-dismissable fade d-flex align-items-center" role="alert" id="alert">
+    <p id='exito' class="m-0"></p>
     <button class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   <div id="spinner-wrapper">
