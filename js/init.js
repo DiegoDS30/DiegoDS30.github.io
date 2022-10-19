@@ -45,7 +45,14 @@ let getJSONData = function(url){
 let user = localStorage.getItem ('usuario');
 let showUser = /^([^]+)@(.+)$/.exec(user);
 
-if (user != '') {
+if (user === null || showUser === null) {
+
+  location.href='./login.html';
+
+}
+
+
+if (user != '' || showUser != '') {
 
     let mostrarUsuario = document.getElementById ('usuario');
     mostrarUsuario.innerHTML = `
@@ -62,13 +69,6 @@ if (user != '') {
     </li>
     `
 }
-
-if (user === null) {
-
-    location.href='./login.html';
-
-}
-
 
 /* Elima el usuario del local storage. */
 
