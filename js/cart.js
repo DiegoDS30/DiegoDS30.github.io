@@ -21,6 +21,10 @@ const input = new Event ('input', {
     bubbles: true,
     cancelable: false
 });
+const click = new Event ('click', {
+    bubbles: true,
+    cancelable: false
+});
 
 /* Agrega un evento de escucha a todos los radio, cuando el usuario presiona uno la funcion calcTotal se ejecuta */
 for (let boton of radios) {
@@ -114,7 +118,7 @@ function calcSubtotal (id, valor) {
 
     document.getElementById(`subtotal-${id}`).innerHTML = `<strong>${articulo.currency} ${(articulo.unitCost * articulo.count).toLocaleString()}</strong>`;
 
-    inputT.dispatchEvent (new Event ('click'));
+    inputT.dispatchEvent (click);
     radioCheckeado.dispatchEvent (change);
 
 }
@@ -182,46 +186,50 @@ function delArticle (id) {
 
 }
 
-pagoCC.addEventListener ('click', () => {
-    document.getElementById ('ccNro').disabled = false;
-    document.getElementById ('ccSeg').disabled = false;
-    document.getElementById ('ccDate').disabled = false;
+let ccNro = document.getElementById ('ccNro');
+let ccSeg = document.getElementById ('ccSeg');
+let ccDate = document.getElementById ('ccDate');
+let pagosField = document.getElementById ('pagos-field')
+let bankAcc = document.getElementById ('bankAcc');
 
-    document.getElementById ('bankAcc').disabled = true;
+let metodoDePago = document.getElementById('invalido');
+let seleccionarMetodo = document.getElementById('seleccionar-metodo');
+
+pagoCC.addEventListener ('change', () => {
+    
+    pagosField.disabled = false;
+
+    bankAcc.disabled = true;
 
     document.getElementById ('metodo').innerHTML = 'Tarjeta de credito'
+
 });
 
-pagoBank.addEventListener ('click', () => {
-    document.getElementById ('ccNro').disabled = true;
-    document.getElementById ('ccSeg').disabled = true;
-    document.getElementById ('ccDate').disabled = true;
+pagoBank.addEventListener ('change', () => {
+    
+    pagosField.disabled = true;
 
-    document.getElementById ('bankAcc').disabled = false;
+    bankAcc.disabled = false;
 
     document.getElementById ('metodo').innerHTML = 'Transferencia bancaria'
+
 });
 
-// Con AJAX puedo evitar que la pagina recarge al enviar el formulario,
-// no hay otra manera con JS puro, asi que timeout
+document.getElementById('modal').addEventListener ('click', () => {
 
-/* 
-No se donde ponerlo xd
+    if (bankAcc.checkValidity() && (ccNro.checkValidity() && ccSeg.checkValidity() && ccDate.checkValidity())) {
 
-setTimeout (() => {
+        seleccionarMetodo.style.color = 'rgb(25, 135, 84)';
+        metodoDePago.style.display = 'none';
+                
+    } else {
 
-            document.getElementById("exito").innerHTML = msg
-            document.getElementById("exito").classList.add("show");
+        seleccionarMetodo.style.color = 'rgb(220, 53, 69)';
+        metodoDePago.style.display = 'block';
 
-                setTimeout (() => {
+    }
 
-                    document.getElementById("exito").classList.remove("show");
-
-            }, 4000)
-
-          }, 8000)
-
-*/
+});
 
 (function () {
     'use strict'
@@ -232,9 +240,32 @@ setTimeout (() => {
           if (!form.checkValidity()) {
             event.preventDefault();
             event.stopPropagation();
+            if (!pagoBank.checked && !pagoCC.checked) {
+
+                seleccionarMetodo.style.color = 'rgb(220, 53, 69)';
+                metodoDePago.style.display = 'block';
+
+            }
           }
+
           form.classList.add('was-validated')
+
+          if (form.checkValidity()) {
+
+            document.getElementById("exito").innerHTML = msg
+            document.getElementById("compra-hecha").classList.add("show");
+
+            setTimeout (() => {
+
+            document.getElementById("compra-hecha").classList.remove("show");
+
+            }, 4000)
+
+          }
 
         }, false)
       })
-    })()
+
+    
+
+    })();

@@ -55,7 +55,7 @@
       <div class="row">
         <hr class="d-none d-md-block mt-3">
 
-        <form action="" class="row needs-validation" method="get" autocomplete="off" novalidate>
+        <form action="#" class="row needs-validation" method="get" autocomplete="off" novalidate >
 
         <div class="col-6">
 
@@ -142,7 +142,7 @@
 
         <div class="d-flex">
           <p id="metodo" class="mb-0 pe-2 py-2 fw-bold">No ha seleccionado</p>
-          <a href="" data-bs-toggle="modal" data-bs-target="#formaDePago" class="p-2">Seleccionar</a></p>
+          <a href="" data-bs-toggle="modal" data-bs-target="#formaDePago" class="p-2" id="seleccionar-metodo">Seleccionar</a></p>
         </div>
 
         <div id="invalido" class="invalid-feedback">Debe seleccionar una forma de pago</div>
@@ -164,6 +164,8 @@
 
                 <hr class="d-none d-md-block my-3">
 
+                <fieldset id="pagos-field">
+
                 <div class="row mb-3">
                   <div class="col-6">
                     <label for="ccNro" class="form-label">Numero de tarjeta</label>
@@ -178,6 +180,8 @@
                     <input type="month" class="form-control" id="ccDate" required>
                   </div>
                 </div>
+
+                </fieldset>
 
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="radioPago" id="radioPagoBanco" value="2" required>
@@ -195,7 +199,7 @@
 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" id="modal" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -227,7 +231,7 @@
     <p class="m-0">Lo sentimos pero este articulo no se pude borrar, ya que es un elemento de prueba</p>
     <button class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
-  <div class="alert alert-success alert-dismissable fade d-flex align-items-center" role="alert" id="alert">
+  <div class="alert alert-success alert-dismissable fade d-flex align-items-center" role="alert" id="compra-hecha">
     <p id='exito' class="m-0"></p>
     <button class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
