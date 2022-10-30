@@ -107,17 +107,21 @@ function showCart () {
  */
 function calcSubtotal (id, valor) {
 
+    // Busco el articulo que voy a actualizar
     let inputT = document.getElementById(`${id}`);
     radioCheckeado = document.querySelector('input[name="envio"]:checked')
 
+    // Busco el articulo y su index en el arreglo
     let articulo = cartArticles.find ((art) => art.id == id);
     let articuloIndex = cartArticles.findIndex((art) => art.id == id);
 
+    // Actualizo el articulo en el arreglo
     articulo.count = valor;
     cartArticles[articuloIndex] = articulo;
 
     document.getElementById(`subtotal-${id}`).innerHTML = `<strong>${articulo.currency} ${(articulo.unitCost * articulo.count).toLocaleString()}</strong>`;
 
+    // Hago dispatch de los eventos para que sea en tiempo real
     inputT.dispatchEvent (click);
     radioCheckeado.dispatchEvent (change);
 
@@ -132,6 +136,8 @@ function calcTotal () {
     total = 0;
     envio = 0;
 
+    // Me aseguro que la moneda sea en dolares para sumarla al total
+
     for (let i = 0; i < cartArticles.length; i++) {
         article = cartArticles[i];
 
@@ -142,6 +148,8 @@ function calcTotal () {
         }
     
     }
+
+    // Calculo el envio, dependiendo de cual radio este seleccionado
 
     envio = total * parseFloat(this.value);
 
@@ -169,16 +177,26 @@ function delArticle (id) {
 
     } else {
 
+        // Busco el articulo y su index en los arreglo
+
         let articuloDel = cartArticles.find ((art) => art.name == id);
         let articuloDelIndex = cartArticles.findIndex ((art) => art.name == id);
         let articuloDelIndexLocal = localArticles.findIndex ((art) => art.name == id);
 
+        // Los borro del DOM
+
         document.getElementById(`${articuloDel.name} - ${articuloDel.id}`).remove()
+
+        // Los borro de los arreglos
 
         cartArticles.splice(articuloDelIndex, 1);
         localArticles.splice(articuloDelIndexLocal, 1);
 
+        // Y actualizo el arreglo del localStorage
+
         localStorage.setItem('cartArts', JSON.stringify(localArticles));
+
+        // Actualizo el precio
 
         radioCheckeado.dispatchEvent (change);
 
@@ -194,6 +212,8 @@ let bankAcc = document.getElementById ('bankAcc');
 
 let metodoDePago = document.getElementById('invalido');
 let seleccionarMetodo = document.getElementById('seleccionar-metodo');
+
+// eventos que al hacer click activan los campos correspondientes de la forma de pago
 
 pagoCC.addEventListener ('change', () => {
     
