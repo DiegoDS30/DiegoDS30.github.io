@@ -13,7 +13,18 @@
 
         /* Saving the email value in the local storage. */
         
-        localStorage.setItem('usuario', email.value);
+        let usuario = {
+
+          primerNombre : '',
+          segundoNombre : '',
+          primerApellido : '',
+          segundoApellido : '',
+          email : `${email.value}`,
+          telefono : '',
+
+        }
+
+        localStorage.setItem('usuario', JSON.stringify(usuario));
       }, false)
     })
   })()

@@ -42,7 +42,7 @@ let getJSONData = function(url){
 
 /* Comprueba si el usuario esta loggeado o no. */
 
-let user = localStorage.getItem ('usuario');
+let user = JSON.parse(localStorage.getItem('usuario')).email;
 let showUser = /^([^]+)@(.+)$/.exec(user);
 
 if (user === null || showUser === null) {
